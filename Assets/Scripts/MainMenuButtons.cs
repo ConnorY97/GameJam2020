@@ -21,7 +21,7 @@ public class MainMenuButtons : MonoBehaviour
     public void PlayGame()
     {
         Debug.Log("PLAYING GAME");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void QuitGame()
