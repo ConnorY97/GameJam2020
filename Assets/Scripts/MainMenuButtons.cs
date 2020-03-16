@@ -9,19 +9,19 @@ public class MainMenuButtons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void PlayGame()
     {
         Debug.Log("PLAYING GAME");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void QuitGame()
@@ -30,3 +30,4 @@ public class MainMenuButtons : MonoBehaviour
         Application.Quit();
     }
 }
+
