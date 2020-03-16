@@ -1487,8 +1487,11 @@ MonoBehaviour:
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 0
+  deathAudio: {fileID: 0}
+  jumpAudio: {fileID: 0}
+  animator: {fileID: 0}
   speed: 6
-  jumpPower: 15
+  jumpPower: 300
   jumpPushPower: 20
 --- !u!61 &1005638152
 BoxCollider2D:
@@ -1536,7 +1539,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &1010205977
 GameObject:
   m_ObjectHideFlags: 0
@@ -2406,8 +2409,11 @@ MonoBehaviour:
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 0
+  deathAudio: {fileID: 0}
+  jumpAudio: {fileID: 0}
+  animator: {fileID: 0}
   speed: 6
-  jumpPower: 100
+  jumpPower: 300
   jumpPushPower: 20
 --- !u!4 &1994007773 stripped
 Transform:
