@@ -10,6 +10,9 @@ public class Character_Controller : MonoBehaviour
 
     [SerializeField] private LayerMask platformLayerMask;
     [SerializeField] private LayerMask wallLayerMask;
+    [SerializeField] AudioClip deathAudio;
+    [SerializeField] AudioClip jumpAudio;
+    [SerializeField] Animator animator;
     public float speed = 6.0f;
     public float jumpPower = 15.0f;
     public float jumpPushPower = 20.0f;
@@ -53,22 +56,24 @@ public class Character_Controller : MonoBehaviour
                 pos.x += speed * Time.deltaTime;
             }
 
-            if (Input.GetKey("w"))
+            if (Input.GetKeyDown("w"))
             {
 
                 if (isGrounded())
                 {
                     rigidBody2D.AddForce(Vector2.up * jumpPower);
+                    //soundManager.PlayAudioClip(deathAudio);
+                    //animator.SetTrigger("isJump");
                 }
 
-                else if (Input.GetKeyDown("w"))
-                {
-                    if (canDoubleJump)
-                    {
-                        rigidBody2D.AddForce(Vector2.up * jumpPower);
-                        canDoubleJump = false;
-                    }
-                }
+                //else if (Input.GetKeyDown("w"))
+                //{
+                //    if (canDoubleJump)
+                //    {
+                //        rigidBody2D.AddForce(Vector2.up * jumpPower);
+                //        canDoubleJump = false;
+                //    }
+                //}
 
                 else if (isWalled())
                 {
@@ -93,7 +98,7 @@ public class Character_Controller : MonoBehaviour
                 pos.x += speed * Time.deltaTime;
             }
 
-            if (Input.GetKey("up"))
+            if (Input.GetKeyDown("up"))
             {
 
                 if (isGrounded())
@@ -101,14 +106,14 @@ public class Character_Controller : MonoBehaviour
                     rigidBody2D.AddForce(Vector2.up * jumpPower);
                 }
 
-                else if (Input.GetKeyDown("up"))
-                {
-                    if (canDoubleJump)
-                    {
-                        rigidBody2D.AddForce(Vector2.up * jumpPower);
-                        canDoubleJump = false;
-                    }
-                }
+                //else if (Input.GetKeyDown("up"))
+                //{
+                //    if (canDoubleJump)
+                //    {
+                //        rigidBody2D.AddForce(Vector2.up * jumpPower);
+                //        canDoubleJump = false;
+                //    }
+                //}
 
                 else if (isWalled())
                 {
@@ -128,14 +133,14 @@ public class Character_Controller : MonoBehaviour
     private bool isGrounded()
     {
         RaycastHit2D raycastHit2D = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0.0f, Vector2.down, 0.1f, platformLayerMask);
-        Debug.Log(raycastHit2D.collider);
+        //Debug.Log(raycastHit2D.collider);
         return raycastHit2D.collider != null;
     }
 
     private bool isWalled()
     {
         RaycastHit2D raycastHit2D = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0.0f, Vector2.up, 0.1f, wallLayerMask);
-        Debug.Log(raycastHit2D.collider);
+        //Debug.Log(raycastHit2D.collider);
         return raycastHit2D.collider != null;
     }
 }
