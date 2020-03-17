@@ -15,6 +15,10 @@ public class MainMenuButtons : MonoBehaviour
     {
         //gameData = new ReadWriteText.GameData();
         readWrite = GetComponent<ReadWriteText>();
+    }
+
+    private void LateUpdate()
+    {
         volumeSlider.value = readWrite.volume;
     }
 

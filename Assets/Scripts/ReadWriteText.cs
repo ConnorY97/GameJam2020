@@ -6,7 +6,9 @@ using System.IO;
 
 public class ReadWriteText : MonoBehaviour
 {
-    public float volume = 100;
+
+    public float volume;
+    [HideInInspector]
     public float highScore;
     //public GameData mData;
 
@@ -84,8 +86,13 @@ public class ReadWriteText : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+
         if (!File.Exists(Application.dataPath + "/gameData.dat"))
+        {
+            volume = 100;
+            highScore = 0;
             CreateFile();
+        }
         else
             ReadFile();
     }
@@ -93,7 +100,7 @@ public class ReadWriteText : MonoBehaviour
     [System.Serializable]
     public class GameData
     {
-        public float mVolume;
+        public float mVolume = 100;
         public float mHighScore;
     }
 }
