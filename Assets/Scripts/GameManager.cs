@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     private GameObject playerOne;
     private GameObject playerTwo;
+    private GameOverMenu gameOverMenu;
 
     public Text playerOneScore;
     public Text playerTwoScore;
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour
     {
         playerOne = GameObject.FindGameObjectWithTag("Player1");
         playerTwo = GameObject.FindGameObjectWithTag("Player2");
+        gameOverMenu = FindObjectOfType<GameOverMenu>().GetComponent<GameOverMenu>();
+        gameOverMenu.gameEnded = false;
     }
 
     // Update is called once per frame
@@ -30,10 +33,10 @@ public class GameManager : MonoBehaviour
         if (playerOne.activeInHierarchy == false && playerTwo.activeInHierarchy == false)
             gameOver = true;
 
-        p1Score = (int)playerOne.transform.position.y;
+        p1Score = (int)playerOne.transform.position.y;
         p2Score = (int)playerTwo.transform.position.y;
 
-        playerOneScore.text = p1Score.ToString();
+        playerOneScore.text = p1Score.ToString();
         playerTwoScore.text = p2Score.ToString(); 
 
         if (gameOver)
@@ -43,10 +46,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         //This is when you add code to save 
-            //Add a screen that informs players the game is over. 
-        //SceneManager.LoadScene("GameOver");
-
-        Debug.Log(p1Score);
+        Debug.Log(p1Score);
         Debug.Log(p2Score); 
+        gameOverMenu.gameEnded = true;
     }
 }
