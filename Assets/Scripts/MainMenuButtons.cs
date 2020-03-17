@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuButtons : MonoBehaviour
 {
     public Slider volumeSlider;
-    ReadWriteText.GameData gameData;
+    public string levelName;
     ReadWriteText readWrite;
 
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class MainMenuButtons : MonoBehaviour
     public void PlayGame()
     {
         Debug.Log("PLAYING GAME");
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(levelName);
     }
 
     public void SaveValues()
