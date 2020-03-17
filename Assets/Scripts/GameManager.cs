@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     private GameObject playerOne;
     private GameObject playerTwo;
+    private GameOverMenu gameOverMenu;
 
     public bool gameOver = false; 
 
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     {
         playerOne = GameObject.FindGameObjectWithTag("Player1");
         playerTwo = GameObject.FindGameObjectWithTag("Player2");
+        gameOverMenu = FindObjectOfType<GameOverMenu>().GetComponent<GameOverMenu>();
+        gameOverMenu.gameEnded = false;
     }
 
     // Update is called once per frame
@@ -32,7 +35,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         //This is when you add code to save 
-            //Add a screen that informs players the game is over. 
-        SceneManager.LoadScene("GameOver"); 
+        Debug.Log(p1Score);
+        Debug.Log(p2Score); 
+        gameOverMenu.gameEnded = true;
     }
 }
