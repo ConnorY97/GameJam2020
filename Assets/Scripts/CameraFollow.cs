@@ -5,13 +5,23 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
 
-    public Transform target;
-    public Transform target2;
+    //public Transform target = null;
+    //public Transform target2 = null;
     public float smoothSpeed = 10f;
     public Vector3 offset;
     Camera main_camera;
     float vertExtent;
     float horzExtent;
+
+    public float riseSpeed = 10.0f;
+    public float speedScaler = 10.0f; 
+    public float speedboost = 10.0f;
+    public float maxSpeed = 1000.0f; 
+    public GameObject cameraController = null;
+    private Rigidbody2D cameraTrigger;
+    private Vector3 cameraStartPos; 
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,35 +29,44 @@ public class CameraFollow : MonoBehaviour
         main_camera = FindObjectOfType<Camera>();
         vertExtent = Camera.main.orthographicSize;
         horzExtent = vertExtent * Screen.width / Screen.height;
-        //CameraExtensions.OrthographicBounds(main_camera);
+        cameraTrigger = cameraController.GetComponent<Rigidbody2D>();
+        cameraStartPos = cameraController.transform.position;
+        cameraStartPos.x = 0; 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 desiredPosition = target.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
-        transform.position = smoothedPosition;
+        //Vector3 desiredPosition = target.position + offset;
+        //Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+        //transform.position = smoothedPosition;
 
-        transform.LookAt(target);
+        //transform.LookAt(target);
+
+    }
+
+    void Update()
+    {
+        float speed = riseSpeed * speedScaler * Time.time * Time.deltaTime;
+        if (speed > maxSpeed)
+            speed = maxSpeed; 
+        cameraStartPos.y += speed;
+        //cameraController.transform.position = new Vector3(cameraStartPos.x, cameraStartPos.y += (riseSpeed * Time.deltaTime), cameraStartPos.z);
+        cameraController.transform.position = cameraStartPos;
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1, 0, 0, 0.5f);
-        //Gizmos.DrawCube(midPoint, new Vector3(1, 1, 1));
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        riseSpeed  *= speedboost; 
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        riseSpeed /= speedboost; 
     }
 }
-
-//public static class CameraExtensions
-//{
-//    public static Bounds OrthographicBounds(this Camera camera)
-//    {
-//        float screenAspect = (float)Screen.width / (float)Screen.height;
-//        float cameraHeight = camera.orthographicSize * 2;
-//        Bounds bounds = new Bounds(
-//            camera.transform.position,
-//            new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
-//        return bounds;
-//    }
-//}
