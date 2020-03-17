@@ -1,13 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     private GameObject playerOne;
     private GameObject playerTwo;
     private GameOverMenu gameOverMenu;
+
+    public Text playerOneScore;
+    public Text playerTwoScore;
+
+    private int p1Score;
+    private int p2Score; 
 
     public bool gameOver = false; 
 
@@ -26,7 +33,11 @@ public class GameManager : MonoBehaviour
         if (playerOne.activeInHierarchy == false && playerTwo.activeInHierarchy == false)
             gameOver = true;
 
+        p1Score = (int)playerOne.transform.position.y;
+        p2Score = (int)playerTwo.transform.position.y;
 
+        playerOneScore.text = p1Score.ToString();
+        playerTwoScore.text = p2Score.ToString(); 
 
         if (gameOver)
             GameOver(); 
