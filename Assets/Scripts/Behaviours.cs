@@ -24,11 +24,13 @@ public class Behaviours : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float step = speed * Time.deltaTime; 
+        float platspeed = speed * Time.deltaTime; 
 
         if (horizontal)
         {
+            //startPos.x += Mathf.Sin(platspeed * Time.time) * (offset / 100);
             transform.position = new Vector3(startPos.x + Mathf.Sin(speed * Time.time) * offset, startPos.y, 0); 
+            //transform.position = startPos; 
         }
         else if (!horizontal)
         {
