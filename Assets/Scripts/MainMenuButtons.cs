@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtons : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Slider volumeSlider;
+    ReadWriteText.GameData gameData;
+    public ReadWriteText readWrite;
 
-    // Update is called once per frame
-    void Update()
+    // Start is called before the first frame update
+    void Start() 
     {
-        
+        //gameData = new ReadWriteText.GameData();
+        //readWrite = GetComponent<ReadWriteText>();
+        volumeSlider.value = readWrite.volume;
     }
 
     public void PlayGame()
@@ -24,8 +24,16 @@ public class MainMenuButtons : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
+    public void SaveValues()
+    {
+        readWrite.volume = volumeSlider.value;
+        readWrite.OverwriteData();
+    }
+
     public void QuitGame()
     {
+        readWrite.volume = volumeSlider.value;
+        //gameData.highScore = highScore;
         Debug.Log("QUIT");
         Application.Quit();
     }
