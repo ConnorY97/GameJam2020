@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public Slider volumeSlider;
+    ReadWriteText.GameData gameData;
 
     bool Paused;
 
@@ -14,6 +17,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Cursor.visible = false;
         Time.timeScale = 1f;
+        gameData = GetComponent<ReadWriteText.GameData>();
+        volumeSlider.value = gameData.mVolume;
     }
 
     // Update is called once per frame
