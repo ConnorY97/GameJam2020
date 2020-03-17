@@ -200,7 +200,10 @@ public class Character_Controller : MonoBehaviour
             playerAnimator.SetBool("Death", true);
             soundManager.PlayOneShot(deathAudio);
 
-
+            dead = true;
+            if (tag == "Player1")
+                Debug.Log(dead); 
+            
 
             //this.gameObject.SetActive(false); 
         }

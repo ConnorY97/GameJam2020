@@ -47,7 +47,7 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        float speed = riseSpeed * speedScaler * Time.time * Time.deltaTime;
+        float speed = riseSpeed * (speedScaler / 5000) * Time.time * Time.deltaTime;
         if (speed > maxSpeed)
             speed = maxSpeed; 
         cameraStartPos.y += speed;
