@@ -15,6 +15,8 @@ public class CameraFollow : MonoBehaviour
 
     public float riseSpeed = 10.0f;
     public float speedScaler = 10.0f; 
+    public float speedboost = 10.0f;
+    public float maxSpeed = 1000.0f; 
     public GameObject cameraController = null;
     private Rigidbody2D cameraTrigger;
     private Vector3 cameraStartPos; 
@@ -28,7 +30,8 @@ public class CameraFollow : MonoBehaviour
         vertExtent = Camera.main.orthographicSize;
         horzExtent = vertExtent * Screen.width / Screen.height;
         cameraTrigger = cameraController.GetComponent<Rigidbody2D>();
-        cameraStartPos = cameraController.transform.position; 
+        cameraStartPos = cameraController.transform.position;
+        cameraStartPos.x = 0; 
     }
 
     // Update is called once per frame
@@ -45,6 +48,8 @@ public class CameraFollow : MonoBehaviour
     void Update()
     {
         float speed = riseSpeed * speedScaler * Time.time * Time.deltaTime;
+        if (speed > maxSpeed)
+            speed = maxSpeed; 
         cameraStartPos.y += speed;
         //cameraController.transform.position = new Vector3(cameraStartPos.x, cameraStartPos.y += (riseSpeed * Time.deltaTime), cameraStartPos.z);
         cameraController.transform.position = cameraStartPos;
@@ -57,11 +62,11 @@ public class CameraFollow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        riseSpeed  *= 100; 
+        riseSpeed  *= speedboost; 
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        riseSpeed /= 100; 
+        riseSpeed /= speedboost; 
     }
 }
