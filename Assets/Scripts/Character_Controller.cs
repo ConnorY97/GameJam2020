@@ -12,7 +12,6 @@ public class Character_Controller : MonoBehaviour
     [SerializeField] private LayerMask wallLayerMask;
     [SerializeField] AudioClip deathAudio;
     [SerializeField] AudioClip jumpAudio;
-    [SerializeField] Animator animator;
     public float speed = 6.0f;
     public float jumpPower = 15.0f;
     public float jumpPushPower = 20.0f;
@@ -58,14 +57,12 @@ public class Character_Controller : MonoBehaviour
 
             if (Input.GetKeyDown("w"))
             {
-
                 if (isGrounded())
                 {
                     rigidBody2D.AddForce(Vector2.up * jumpPower);
+                    StartCoroutine(Resize());
                     //soundManager.PlayAudioClip(deathAudio);
-                    //animator.SetTrigger("isJump");
                 }
-
                 //else if (Input.GetKeyDown("w"))
                 //{
                 //    if (canDoubleJump)
@@ -103,6 +100,7 @@ public class Character_Controller : MonoBehaviour
 
                 if (isGrounded())
                 {
+                    StartCoroutine(Resize1());
                     rigidBody2D.AddForce(Vector2.up * jumpPower);
                 }
 
@@ -128,6 +126,20 @@ public class Character_Controller : MonoBehaviour
         }
 
         transform.position = pos;
+    }
+
+    private IEnumerator Resize()
+    {
+        player1.gameObject.transform.localScale += new Vector3(0, 0.5f, 0);
+        yield return new WaitForSeconds(1.0f);
+        player1.gameObject.transform.localScale += new Vector3(0, -0.5f, 0);
+    }
+    
+    private IEnumerator Resize1()
+    {
+        player2.gameObject.transform.localScale += new Vector3(0, 0.5f, 0);
+        yield return new WaitForSeconds(1.0f);
+        player2.gameObject.transform.localScale += new Vector3(0, -0.5f, 0);
     }
 
     private bool isGrounded()
