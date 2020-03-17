@@ -13,70 +13,31 @@ public class Behaviours : MonoBehaviour
 
 
     private Vector2 startPos;
-    private Vector2 target; 
-    private bool increase = true; 
-    private float t = 0.0f;
 
 
     // Start is called before the first frame update
     void Start()
     {
         startPos = transform.position;
-
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (horizontal)
-            target = startPos + new Vector2(offset, 0);
-        else
-            target = startPos + new Vector2(0, offset);
-
         float step = speed * Time.deltaTime; 
 
-
-        if (transform.position == new Vector3(startPos.x, startPos.y, 0))
-        {
-            increase = true;
-        }
-        else if (transform.position == new Vector3(target.x, target.y, 0))
-            increase = false; 
-
         if (horizontal)
         {
-            if (increase)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, target, step);
-            }
-            else if (!increase)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, startPos, step);
-            }
+            transform.position = new Vector3(startPos.x + Mathf.Sin(speed * Time.time) * offset, startPos.y, 0); 
         }
         else if (!horizontal)
         {
-            if (increase)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, target, step);
-            }
-            else if (!increase)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, startPos, step);
-            }
+            transform.position = new Vector3(startPos.x, startPos.y + Mathf.Sin(speed * Time.time) * offset, 0); 
         }
-
-        if (increase)
-            t += speed * Time.deltaTime;
-        else if (!increase)
-            t -= speed * Time.deltaTime;
 
         if (rotate)
         {
             transform.Rotate(0, 0, rotSpeed * Time.deltaTime);
         }
-
-        Debug.Log(transform.position.x + ", " + startPos.x);
     }
 }

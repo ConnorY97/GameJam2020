@@ -212,38 +212,6 @@ MonoBehaviour:
   - {fileID: 1298801010}
   - {fileID: 1671240324}
   moveSpeed: 2
---- !u!1 &113071909 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8636252438026755046, guid: fad4a1f5623f6b947b0ca8ab469d1c92,
-    type: 3}
-  m_PrefabInstance: {fileID: 2009785843}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &113071910
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113071909}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.75599957}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.57}
-    oldSize: {x: 10.8, y: 10.8}
-    newSize: {x: 10.8, y: 10.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 10.8, y: 10.8}
-  m_EdgeRadius: 0
 --- !u!1 &143172177 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6635435624741405133, guid: 438b716d3b0bbc64d8ec6a0b09c32992,
