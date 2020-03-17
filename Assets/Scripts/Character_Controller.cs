@@ -8,7 +8,8 @@ public class Character_Controller : MonoBehaviour
     Character_Controller player1;
     Character_Controller player2;
 
-    private Animator playerAnimator = null; 
+    private Animator playerAnimator = null;
+    private AudioSource soundManager = null;
     [SerializeField] private LayerMask platformLayerMask;
     [SerializeField] private LayerMask wallLayerMask;
     [SerializeField] AudioClip deathAudio;
@@ -30,7 +31,8 @@ public class Character_Controller : MonoBehaviour
         rigidBody2D = transform.GetComponent<Rigidbody2D>();
         boxCollider2D = transform.GetComponent<BoxCollider2D>();
 
-        playerAnimator = GetComponent<Animator>(); 
+        playerAnimator = GetComponent<Animator>();
+        soundManager = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -92,6 +94,7 @@ public class Character_Controller : MonoBehaviour
                 if (isGrounded())
                 {
                     rigidBody2D.AddForce(Vector2.up * jumpPower);
+                    soundManager.PlayOneShot(jumpAudio);
                     StartCoroutine(Resize());
                     //soundManager.PlayAudioClip(deathAudio);
                 }
@@ -133,6 +136,7 @@ public class Character_Controller : MonoBehaviour
                 if (isGrounded())
                 {
                     StartCoroutine(Resize1());
+                    soundManager.PlayOneShot(jumpAudio);
                     rigidBody2D.AddForce(Vector2.up * jumpPower);
                 }
 
@@ -194,9 +198,9 @@ public class Character_Controller : MonoBehaviour
         {
             //Vector3 temp = this.gameObject.transform.localScale; 
             playerAnimator.SetBool("Death", true);
+            soundManager.PlayOneShot(deathAudio);
 
 
-            
 
             //this.gameObject.SetActive(false); 
         }
