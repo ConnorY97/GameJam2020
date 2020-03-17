@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 116382909}
   - component: {fileID: 116382908}
   - component: {fileID: 116382907}
+  - component: {fileID: 116382912}
   m_Layer: 0
   m_Name: p2
   m_TagString: Player2
@@ -207,10 +208,10 @@ MonoBehaviour:
     m_Bits: 256
   deathAudio: {fileID: 0}
   jumpAudio: {fileID: 0}
-  animator: {fileID: 0}
   speed: 6
   jumpPower: 15
   jumpPushPower: 20
+  dead: 0
 --- !u!212 &116382910
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -268,12 +269,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116382906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9, y: -1.77, z: -18.064785}
+  m_LocalPosition: {x: -0.71, y: 1.48, z: -18.064785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &116382912
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116382906}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 09450f6f48d04c04684bb3d6a5b4f6c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &441868961
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +307,7 @@ GameObject:
   - component: {fileID: 441868962}
   - component: {fileID: 441868966}
   - component: {fileID: 441868965}
+  - component: {fileID: 441868967}
   m_Layer: 0
   m_Name: p1
   m_TagString: Player1
@@ -377,7 +398,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441868961}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 4.74, z: -17.484375}
+  m_LocalPosition: {x: 6.27, y: 4.62, z: -17.484375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -403,10 +424,10 @@ MonoBehaviour:
     m_Bits: 256
   deathAudio: {fileID: 0}
   jumpAudio: {fileID: 0}
-  animator: {fileID: 0}
   speed: 6
   jumpPower: 15
   jumpPushPower: 20
+  dead: 0
 --- !u!50 &441868966
 Rigidbody2D:
   serializedVersion: 4
@@ -428,6 +449,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &441868967
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441868961}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 09450f6f48d04c04684bb3d6a5b4f6c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,9 +866,10 @@ GameObject:
   - component: {fileID: 766869219}
   - component: {fileID: 766869218}
   - component: {fileID: 766869217}
-  m_Layer: 0
+  - component: {fileID: 766869220}
+  m_Layer: 9
   m_Name: Gear_1
-  m_TagString: Untagged
+  m_TagString: Death
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -907,12 +948,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766869216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.6097565, y: -1.0244, z: 0}
+  m_LocalPosition: {x: 5.89, y: 1.08, z: 0}
   m_LocalScale: {x: 0.4232, y: 0.4232, z: 0.4232}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &766869220
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766869216}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.34
 --- !u!1001 &1236234254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1017,7 +1074,12 @@ PrefabInstance:
     - target: {fileID: 8636252438026755046, guid: fad4a1f5623f6b947b0ca8ab469d1c92,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636252438026755046, guid: fad4a1f5623f6b947b0ca8ab469d1c92,
+        type: 3}
+      propertyPath: m_TagString
+      value: Death
       objectReference: {fileID: 0}
     - target: {fileID: 8636252438026755048, guid: fad4a1f5623f6b947b0ca8ab469d1c92,
         type: 3}
