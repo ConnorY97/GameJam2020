@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Player1
   - Player2
+  - Death
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - 
   - platform
-  - 
+  - Death
   - 
   - 
   - 

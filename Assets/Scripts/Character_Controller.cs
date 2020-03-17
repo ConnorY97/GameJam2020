@@ -8,6 +8,7 @@ public class Character_Controller : MonoBehaviour
     Character_Controller player1;
     Character_Controller player2;
 
+    private Animator playerAnimator = null; 
     [SerializeField] private LayerMask platformLayerMask;
     [SerializeField] private LayerMask wallLayerMask;
     [SerializeField] AudioClip deathAudio;
@@ -20,12 +21,16 @@ public class Character_Controller : MonoBehaviour
     private bool canJump;
     private bool canDoubleJump;
 
+    public bool dead = false; 
+
     private void Awake()
     {
         player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Character_Controller>();
         player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Character_Controller>();
         rigidBody2D = transform.GetComponent<Rigidbody2D>();
         boxCollider2D = transform.GetComponent<BoxCollider2D>();
+
+        playerAnimator = GetComponent<Animator>(); 
     }
 
     // Update is called once per frame
@@ -42,6 +47,33 @@ public class Character_Controller : MonoBehaviour
         {
             canJump = true;
         }
+
+
+        //switch (tag)
+        //{
+        //    case "Player1":
+        //        if (Input.GetKey("a"))
+        //        {
+        //            pos.x -= speed * Time.deltaTime;
+        //        }
+
+        //        if (Input.GetKey("d"))
+        //        {
+        //            pos.x += speed * Time.deltaTime;
+        //        }
+        //        break;
+        //    case "Player2":
+        //        if (Input.GetKey("left"))
+        //        {
+        //            pos.x -= speed * Time.deltaTime;
+        //        }
+
+        //        if (Input.GetKey("right"))
+        //        {
+        //            pos.x += speed * Time.deltaTime;
+        //        }
+        //        break;
+        //}
 
         if (this.gameObject.tag == "Player1")
         {
@@ -154,6 +186,25 @@ public class Character_Controller : MonoBehaviour
         RaycastHit2D raycastHit2D = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0.0f, Vector2.up, 0.1f, wallLayerMask);
         //Debug.Log(raycastHit2D.collider);
         return raycastHit2D.collider != null;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Death")
+        {
+            //Vector3 temp = this.gameObject.transform.localScale; 
+            playerAnimator.SetBool("Death", true);
+
+
+            
+
+            //this.gameObject.SetActive(false); 
+        }
+    }
+
+    public void Death()
+    {
+        this.gameObject.SetActive(false); 
     }
 }
 
