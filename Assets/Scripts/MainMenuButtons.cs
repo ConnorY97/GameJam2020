@@ -8,13 +8,13 @@ public class MainMenuButtons : MonoBehaviour
 {
     public Slider volumeSlider;
     ReadWriteText.GameData gameData;
-    public ReadWriteText readWrite;
+    ReadWriteText readWrite;
 
     // Start is called before the first frame update
     void Start() 
     {
         //gameData = new ReadWriteText.GameData();
-        //readWrite = GetComponent<ReadWriteText>();
+        readWrite = GetComponent<ReadWriteText>();
         volumeSlider.value = readWrite.volume;
     }
 
@@ -34,8 +34,10 @@ public class MainMenuButtons : MonoBehaviour
     {
         readWrite.volume = volumeSlider.value;
         //gameData.highScore = highScore;
+        readWrite.OverwriteData();
         Debug.Log("QUIT");
         Application.Quit();
+        UnityEditor.EditorApplication.ExitPlaymode();
     }
 }
 

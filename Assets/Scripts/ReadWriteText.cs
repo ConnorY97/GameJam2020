@@ -77,12 +77,12 @@ public class ReadWriteText : MonoBehaviour
         };
 
         bf.Serialize(file, data);
-        Debug.Log("File Overwrite");
+        Debug.Log("File Overwrite with volume = " + volume + " & highscore = " + highScore);
         file.Close();
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (!File.Exists(Application.dataPath + "/gameData.dat"))
             CreateFile();
