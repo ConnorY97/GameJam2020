@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenuButtons : MonoBehaviour
 {
     public Slider volumeSlider;
     public string levelName;
+    public TextMeshProUGUI highScore;
     ReadWriteText readWrite;
 
     // Start is called before the first frame update
@@ -15,6 +17,7 @@ public class MainMenuButtons : MonoBehaviour
     {
         //gameData = new ReadWriteText.GameData();
         readWrite = GetComponent<ReadWriteText>();
+        highScore.SetText(readWrite.highScore.ToString());
     }
 
     private void LateUpdate()

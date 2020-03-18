@@ -9,7 +9,7 @@ public class ReadWriteText : MonoBehaviour
 
     public float volume;
     [HideInInspector]
-    public float highScore;
+    public int highScore;
     //public GameData mData;
 
     void CreateFile()
@@ -101,6 +101,6 @@ public class ReadWriteText : MonoBehaviour
     public class GameData
     {
         public float mVolume = 100;
-        public float mHighScore;
+        public int mHighScore;
     }
 }
