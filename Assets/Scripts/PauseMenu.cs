@@ -7,7 +7,9 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public Slider volumeSlider;
-    ReadWriteText.GameData gameData;
+    ReadWriteText readWrite;
+    private GameOverMenu gameOver;
+    private readonly string mainMenu = "Main Menu";
 
     bool Paused;
 
@@ -17,14 +19,16 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Cursor.visible = false;
         Time.timeScale = 1f;
-        gameData = GetComponent<ReadWriteText.GameData>();
-        volumeSlider.value = gameData.mVolume;
+        readWrite = GetComponent<ReadWriteText>();
+        volumeSlider.value = readWrite.volume;
+        gameOver = FindObjectOfType<GameOverMenu>().GetComponent<GameOverMenu>();
+        //gameData = GetComponent<ReadWriteText.GameData>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !gameOver.gameEnded)
         {
             Pause();
         }
@@ -38,6 +42,8 @@ public class PauseMenu : MonoBehaviour
             Paused = false;
             Time.timeScale = 1f;
             pauseMenu.SetActive(false);
+            readWrite.volume = volumeSlider.value;
+            readWrite.OverwriteData();
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
@@ -60,6 +66,6 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("QUIT");
-        Application.Quit();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenu);
     }
 }
