@@ -56,5 +56,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameOVER");
         gameOverMenu.player1ScoreText.SetText(p1Score.ToString());
         gameOverMenu.player2ScoreText.SetText(p2Score.ToString());
+        gameOverMenu.player1CheckScore = p1Score;
+        gameOverMenu.player2CheckScore = p2Score;
     }
 }
