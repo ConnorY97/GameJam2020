@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
@@ -10,7 +9,7 @@ public class PauseMenu : MonoBehaviour
     public Slider volumeSlider;
     ReadWriteText readWrite;
     private GameOverMenu gameOver;
-    private string mainMenu = "Main Menu";
+    private readonly string mainMenu = "Main Menu";
 
     bool Paused;
 
@@ -67,6 +66,6 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("QUIT");
-        SceneManager.LoadScene(mainMenu);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenu);
     }
 }
