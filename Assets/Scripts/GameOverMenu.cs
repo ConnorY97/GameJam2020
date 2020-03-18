@@ -1,25 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameOverMenu : MonoBehaviour
 {
     public GameObject gameOverMenu;
+    public TextMeshProUGUI player1ScoreText;
+    public TextMeshProUGUI player2ScoreText;
     [HideInInspector]
-    public bool gameEnded;
+    public bool gameEnded = false;
+    private readonly string mainMenu = "Main Menu";
 
     // Start is called before the first frame update
     void Start()
     {
-        gameOverMenu.SetActive(false);
+        //player1ScoreText = GetComponent<TextMeshPro>();
+        //player2ScoreText = GetComponent<TextMeshPro>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ReturnToMenu()
     {
-        if (gameEnded)
-            gameOverMenu.SetActive(true);
-        else
-            gameOverMenu.SetActive(false);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenu);
     }
 }
