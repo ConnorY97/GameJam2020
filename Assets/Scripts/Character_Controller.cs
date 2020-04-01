@@ -94,7 +94,7 @@ public class Character_Controller : MonoBehaviour
                 if (isGrounded())
                 {
                     rigidBody2D.AddForce(Vector2.up * jumpPower);
-                    soundManager.PlayOneShot(jumpAudio);
+                    //soundManager.PlayOneShot(jumpAudio);
                     StartCoroutine(Resize());
                     //soundManager.PlayAudioClip(deathAudio);
                 }
@@ -111,7 +111,7 @@ public class Character_Controller : MonoBehaviour
                 {
                     if (canJump)
                     {
-                        rigidBody2D.AddForce(Vector2.up * jumpPushPower);
+                        //rigidBody2D.AddForce(Vector2.up * jumpPushPower);
                         canJump = false;
                     }
                 }
@@ -200,7 +200,10 @@ public class Character_Controller : MonoBehaviour
             playerAnimator.SetBool("Death", true);
             soundManager.PlayOneShot(deathAudio);
 
-
+            dead = true;
+            if (tag == "Player1")
+                Debug.Log(dead); 
+            
 
             //this.gameObject.SetActive(false); 
         }
