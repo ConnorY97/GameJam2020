@@ -8,7 +8,6 @@ using TMPro;
 public class MainMenuButtons : MonoBehaviour
 {
     public Slider volumeSlider;
-    public string levelName;
     public TextMeshProUGUI highScore;
     ReadWriteText readWrite;
 
@@ -28,7 +27,7 @@ public class MainMenuButtons : MonoBehaviour
     public void PlayGame()
     {
         Debug.Log("PLAYING GAME");
-        SceneManager.LoadScene(levelName);
+        SceneManager.LoadScene(1);
     }
 
     public void SaveValues()
